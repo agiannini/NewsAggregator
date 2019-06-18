@@ -1,0 +1,37 @@
+
+    <div class="container">
+      <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+            <a class="text-muted" href="#">Subscribe</a>
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="#">News Aggregator</a>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <form #search="ngForm" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" name="searchQuery" type="search" placeholder="Search" aria-label="Search"  [(ngModel)]="searchTerm.term">
+            <a routerLink="/search/{{searchTerm.term}}"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></a>
+          </form>
+          </div>
+        </div>
+      </header>
+
+
+
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <a routerLink="categories/world" class="p-2 text-muted">World</a>
+          <a routerLink="categories/politics" class="p-2 text-muted">U.S.</a>
+          <a routerLink="categories/technology" class="p-2 text-muted" href="#">Technology</a>
+          <a routerLink="categories/theater" class="p-2 text-muted" href="#">Theater</a>
+          <a routerLink="categories/science" class="p-2 text-muted" href="#">Science</a>
+          <a routerLink="categories/arts" class="p-2 text-muted" href="#">Arts</a>
+          <a routerLink="categories/sports" class="p-2 text-muted" href="#">Sports</a>
+          <a routerLink="categories/opinion" class="p-2 text-muted" href="#">Opinion</a>
+          <a routerLink="categories/food" class="p-2 text-muted" href="#">Food</a>
+          <a routerLink="categories/business" class="p-2 text-muted" href="#">Business</a>
+          <a routerLink="categories/travel" class="p-2 text-muted" href="#">Travel</a>
+          <a routerLink="categories/realestate" class="p-2 text-muted" href="#">Real Estate</a>
+        </nav>
+      </div>

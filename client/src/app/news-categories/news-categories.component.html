@@ -1,0 +1,51 @@
+<div class="mx-auto" style="width:75vw">
+  <div class="card-deck">
+
+
+
+        <div *ngFor="let headline of timesResults">
+          <div class="card mx-3 px-3" style="width:250px">
+
+            <img class="card-img-top mx-auto" style="width:150px" src="{{headline.multimedia[0].url}}">
+
+            <strong class="card-title text-center"> New York Times </strong>
+            <h3 class="mb-0">
+              <a class="text-dark stretched-link" target="_blank"  href="{{headline.url}}">{{headline.title}}</a>
+            </h3>
+            <p class="card-text">{{headline.lead_paragraph}}></p>
+
+          </div>
+        </div>
+
+
+
+
+    <div *ngFor="let headline of guardianResults">
+      <div class="card mx-3 px-3" style="width:300px">
+        <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/The_Guardian_2018.svg/1280px-The_Guardian_2018.svg.png">
+        <strong class="d-inline-block mb-2 text-primary">Guardian {{headline.sectionName}}</strong>
+        <h3 class="mb-0">
+          <a class="text-dark stretched-link" target="_blank"  href="{{headline.webUrl}}">{{headline.webTitle}}</a>
+        </h3>
+        <div class="mb-1 text-muted"></div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+</div>
