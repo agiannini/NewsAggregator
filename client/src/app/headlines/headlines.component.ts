@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HeadlinesComponent implements OnInit {
 
   headlines = null;
+  newsAPI_results = [];
   guardianResults = [];
   timesResults = [];
   searchTerm = "";
@@ -26,27 +27,34 @@ export class HeadlinesComponent implements OnInit {
       });
     }
 
-// This calls the NYT data and adds an image to any items without them
+// Purpose: to call the service class to retriece results for the given search
+// Notes:   After the NYT call, it adds pictures to any without
     callService(){
       this.api.searchNYT(this.searchTerm)
           .subscribe((data) => {
             this.timesResults = data["response"].docs;
-            console.log(this.timesResults);
+            //console.log(this.timesResults);
             for (var x in this.timesResults){
               if(this.timesResults[x].multimedia.length == 0){
                 this.img = {'url': 'images/2019/06/17/science/17DOGS/17DOGS-threeByTwoMediumAt2X.jpg?quality=75&auto=webp&disable=upscale&width=600'};
                 this.timesResults[x].multimedia.push(this.img);
               }
-
             }
-            console.log(this.timesResults);
           })
 
           this.api.searchGuardian(this.searchTerm)
           .subscribe((data) => {
             this.guardianResults = data["response"].results;
-              console.log(this.guardianResults);
+            //  console.log(this.guardianResults);
           })
+
+          this.api.searchNewsAPI(this.searchTerm)
+          .subscribe((data) =>{
+            console.log(data["articles"]);
+            this.newsAPI_results = data["articles"];
+          })
+
+
       }
     }
 

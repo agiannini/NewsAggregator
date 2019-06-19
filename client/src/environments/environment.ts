@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   guardian_key : 'ebe21b59-c243-4a96-b1c5-6003a7eb568d',
-  nytimes_key : 'EewRtEojIX3Wol0LI7O8Zn3JVNfAjAn5'
+  nytimes_key : 'EewRtEojIX3Wol0LI7O8Zn3JVNfAjAn5',
+  newsAPI_key : '2d64273e5c50467c894bc121baede70d'
 };
 
 /*

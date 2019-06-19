@@ -17,6 +17,7 @@ let guardianHeader = {
   providedIn: 'root'
 })
 export class ApiServiceService {
+
   constructor(private http: HttpClient) { }
 
   getGuardianSearch() {
@@ -30,15 +31,21 @@ export class ApiServiceService {
   searchNYT(term){
     return this.http.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+term+'&api-key='+environment.nytimes_key)
   }
+
   searchCategoryNYT(categoryName){
     return this.http.get('https://api.nytimes.com/svc/topstories/v2/'+categoryName+'.json?api-key='+environment.nytimes_key)
   }
-
-
 
 // The gaurdians category APIc needs a header attached
   searchGuardianCategories(categoryName){
     return this.http.get('https://content.guardianapis.com/'+categoryName+"?api-key="+environment.guardian_key);
   }
 
+  searchNewsAPI(term){
+    return this.http.get('https://newsapi.org/v2/everything?q='+term+'&language=en&sortBy=publishedAt&pageSize=100&apiKey='+environment.newsAPI_key);
+  }
+
+  NewsAPI_Headlines(){
+    return this.http.get('https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey='+environment.newsAPI_key);
+  }
 }

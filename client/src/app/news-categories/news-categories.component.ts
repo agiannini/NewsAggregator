@@ -14,6 +14,7 @@ export class NewsCategoriesComponent implements OnInit {
   categoryName = "";
   timesResults = [];
   guardianResults = [];
+  newsAPI_Results = [];
   img = {};
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -41,6 +42,13 @@ export class NewsCategoriesComponent implements OnInit {
           .subscribe((data) => {
             this.guardianResults = data["response"].results;
           })
+
+          this.api.searchNewsAPI('broadway')
+          .subscribe((data) =>{
+            console.log(data);
+            this.newsAPI_Results= data["articles"];
+          })
+
         break;
 
       }
@@ -49,6 +57,11 @@ export class NewsCategoriesComponent implements OnInit {
           .subscribe((data) => {
             this.guardianResults = data["response"].results;
           })
+          this.api.searchNewsAPI('art')
+          .subscribe((data) =>{
+            console.log(data);
+            this.newsAPI_Results= data["articles"];
+          })
         break;
       }
       case "sports": {
@@ -56,6 +69,13 @@ export class NewsCategoriesComponent implements OnInit {
           .subscribe((data) => {
             this.guardianResults = data["response"].results;
           })
+
+          this.api.searchNewsAPI('sports')
+          .subscribe((data) =>{
+            console.log(data);
+            this.newsAPI_Results= data["articles"];
+          })
+
         break;
       }
       case "opinion": {
@@ -63,20 +83,24 @@ export class NewsCategoriesComponent implements OnInit {
           .subscribe((data) => {
             this.guardianResults = data["response"].results;
           })
-        break;
-      }
-      case "realestate": {
-        this.api.searchGuardianCategories('business/realestate')
-          .subscribe((data) => {
-            this.guardianResults = data["response"].results;
+          this.api.searchNewsAPI('opinion')
+          .subscribe((data) =>{
+            console.log(data);
+            this.newsAPI_Results= data["articles"];
           })
         break;
       }
+
       default: {
 
         this.api.searchGuardianCategories(this.categoryName)
           .subscribe((data) => {
             this.guardianResults = data["response"].results;
+          })
+          this.api.searchNewsAPI(this.categoryName)
+          .subscribe((data) =>{
+            console.log(data);
+            this.newsAPI_Results= data["articles"];
           })
         break;
       }

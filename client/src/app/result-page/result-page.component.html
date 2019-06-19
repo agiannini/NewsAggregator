@@ -1,3 +1,23 @@
-<h1>
-  result-page works!
-</h1>
+<div class="mx-auto" style="width:80vw">
+
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <h1 class="display-4 font-italic">Welcome to my News Aggregator</h1>
+    <p class="lead my-3">I used the Guardian API, the New York Times API and the NewsAPI to built this site. Use the search bar in the upper right hand corner, or check out the categories! </p>
+    <p class="lead mb-0 text-white font-weight-bold">Here are Today's Top Headlines:</p>
+  </div>
+
+  <div class="card-deck mx-auto">
+    <div *ngFor="let headline of topHeadlines">
+      <div class="card mx-3 px-3" style="width:275px">
+        <img class="card-img-top" src="{{headline.urlToImage}}">
+        <strong class="d-inline-block mb-2 text-primary">{{headline["source"].name}}</strong>
+        <h3 class="mb-0">
+          <a class="text-dark stretched-link" href="{{headline.url}}">{{headline.title}}</a>
+        </h3>
+        <div class="mb-1 text-muted"></div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

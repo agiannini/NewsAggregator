@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiServiceService} from '../api-service.service'
 
 @Component({
   selector: 'app-result-page',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultPageComponent implements OnInit {
 
-  constructor() { }
+
+  topHeadlines = [];
+  constructor(private api:ApiServiceService) { }
 
   ngOnInit() {
+    this.api.NewsAPI_Headlines()
+    .subscribe((data) => {
+      console.log(data["articles"]);
+      this.topHeadlines = data["articles"];
+    })
+
+
   }
 
 }

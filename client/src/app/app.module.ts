@@ -10,9 +10,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { TestDirective } from './test.directive';
 import { NewsCategoriesComponent } from './news-categories/news-categories.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: ResultPageComponent },
   { path: 'search/:term', component: HeadlinesComponent },
   { path: 'categories/:term', component: NewsCategoriesComponent }
 
@@ -33,7 +36,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(
   routes  )],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
