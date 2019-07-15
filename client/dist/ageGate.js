@@ -1,5 +1,5 @@
 const TODAY = new Date();
-const AGE_LIMIT = 21;
+const AGE_LIMIT = 18;
 
 
 
